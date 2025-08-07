@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo Change Requests -->
+        <record id="demo_change_request_1" model="simple.change.request">
+            <field name="name">Email System Upgrade</field>
+            <field name="description">Upgrade the current email system to improve performance and security. This includes migrating to a new email server, updating all client configurations, and implementing enhanced security protocols.</field>
+            <field name="priority">high</field>
+            <field name="state">submitted</field>
+            <field name="department">IT Department</field>
+            <field name="request_type">system</field>
+            <field name="justification">The current email system is outdated and poses security risks. Recent security audits have identified vulnerabilities that need immediate attention. Upgrading will improve productivity, reduce security risks, and provide better user experience.</field>
+            <field name="impact_analysis">Impact Assessment:
+• Technical Impact: 2 hours system downtime required
+• User Impact: All 150+ users need to reconfigure email clients
+• Training Impact: IT staff requires 8 hours training on new system
+• Security Impact: Significantly improved security posture
+• Performance Impact: 40% faster email processing
+• Cost Impact: One-time upgrade cost vs. ongoing security risks</field>
+            <field name="expected_completion">2025-08-15</field>
+        </record>
+
+        <record id="demo_change_request_2" model="simple.change.request">
+            <field name="name">Digital Employee Onboarding Process</field>
+            <field name="description">Implement a comprehensive digital onboarding process for new employees to streamline the hiring process, improve new hire experience, and ensure consistent onboarding across all departments.</field>
+            <field name="priority">medium</field>
+            <field name="state">approved</field>
+            <field name="department">Human Resources</field>
+            <field name="request_type">process</field>
+            <field name="justification">Current manual onboarding process is time-consuming, inconsistent, and prone to errors. Paper-based forms are often lost or incomplete. A digital process will save time, improve consistency, ensure compliance, and provide better tracking of onboarding progress.</field>
+            <field name="impact_analysis">Expected Benefits:
+• Efficiency: Reduces onboarding time from 5 days to 2 days
+• Consistency: Standardized process across all departments
+• Compliance: Automated compliance checks and documentation
+• Experience: Improved new hire satisfaction scores
+• Tracking: Real-time progress monitoring
+• Cost Savings: Reduced paper usage and administrative time
+• Training Required: 4 hours for HR staff on new system</field>
+            <field name="expected_completion">2025-09-01</field>
+        </record>
+
+        <record id="demo_change_request_3" model="simple.change.request">
+            <field name="name">Remote Work Policy Revision</field>
+            <field name="description">Comprehensive update to the company remote work policy to reflect new hybrid work arrangements, provide clearer guidelines for remote work, and align with industry best practices and legal requirements.</field>
+            <field name="priority">low</field>
+            <field name="state">draft</field>
+            <field name="department">Human Resources</field>
+            <field name="request_type">policy</field>
+            <field name="justification">Current policy is outdated and doesn't reflect the new hybrid work model adopted post-pandemic. Employees and managers need clearer guidelines on remote work expectations, equipment provision, performance measurement, and communication protocols.</field>
+            <field name="impact_analysis">Impact Considerations:
+• Scope: Affects all 200+ employees across all departments
+• Communication: Company-wide communication campaign required
+• Legal: Requires legal review for compliance with labor laws
+• Equipment: May require additional equipment budget for remote workers
+• Performance: Need to establish new performance metrics for remote work
+• Benefits: Improved work-life balance and employee satisfaction
+• Timeline: 3-month implementation period recommended</field>
+            <field name="expected_completion">2025-09-15</field>
+        </record>
+
+        <record id="demo_change_request_4" model="simple.change.request">
+            <field name="name">Customer Support System Integration</field>
+            <field name="description">Integrate the customer support ticketing system with the CRM to provide better customer service, improve response times, and enhance customer satisfaction tracking.</field>
+            <field name="priority">urgent</field>
+            <field name="state">completed</field>
+            <field name="department">Customer Service</field>
+            <field name="request_type">system</field>
+            <field name="justification">Current disconnected systems lead to poor customer experience, duplicate data entry, and missed follow-ups. Integration will provide 360-degree customer view and improve service quality.</field>
+            <field name="impact_analysis">Project Results:
+• Response Time: Improved from 4 hours to 1 hour average
+• Customer Satisfaction: Increased by 25%
+• Data Accuracy: Eliminated duplicate entries
+• Efficiency: 30% reduction in manual data entry
+• Visibility: Complete customer interaction history
+• Training: 6 hours training completed for 12 support staff</field>
+            <field name="expected_completion">2025-07-01</field>
+        </record>
+
+        <record id="demo_change_request_5" model="simple.change.request">
+            <field name="name">Expense Management Process Automation</field>
+            <field name="description">Automate the expense reporting and approval process to reduce manual work, improve accuracy, and provide better expense tracking and reporting capabilities.</field>
+            <field name="priority">medium</field>
+            <field name="state">rejected</field>
+            <field name="department">Finance</field>
+            <field name="request_type">process</field>
+            <field name="justification">Current manual expense process is time-consuming for employees and finance team. Automation will reduce processing time, improve accuracy, and provide better expense analytics.</field>
+            <field name="impact_analysis">Rejection Reasons:
+• Budget: Insufficient budget allocated for this fiscal year
+• Priority: Lower priority compared to other system upgrades
+• Timing: Conflicting with year-end audit activities
+• Resources: IT team fully committed to other projects
+• Recommendation: Resubmit for next fiscal year planning</field>
+            <field name="expected_completion">2025-10-01</field>
+        </record>
+    </data>
+</odoo> 
