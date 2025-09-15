@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Export Wizard Form View -->
+    <record id="view_change_request_export_wizard_form" model="ir.ui.view">
+        <field name="name">change.request.export.wizard.form</field>
+        <field name="model">change.request.export.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Export Change Request to Word">
+                <group>
+                    <field name="change_request_id" readonly="1"/>
+                    <field name="output_filename"/>
+                    <field name="include_effort_breakdown"/>
+                </group>
+                
+                <group string="Word Template (Optional)">
+                    <field name="template_file" filename="template_filename"/>
+                    <field name="template_filename" invisible="1"/>
+                    <p class="text-muted">
+                        Upload a Word template (.docx) file for mail merge. 
+                        If no template is provided, a basic document will be generated.
+                    </p>
+                    <p class="text-muted">
+                        Template variables available: {{project_name}}, {{change_number}}, {{requester_name}}, 
+                        {{problem_statement}}, {{change_description}}, {{effort_breakdown}}, etc.
+                    </p>
+                </group>
+                
+                <footer>
+                    <button name="action_export_to_word" string="Export to Word" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Export Wizard Action -->
+    <record id="action_change_request_export_wizard" model="ir.actions.act_window">
+        <field name="name">Export to Word</field>
+        <field name="res_model">change.request.export.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+</odoo>

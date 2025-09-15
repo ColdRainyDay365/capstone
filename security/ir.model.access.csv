@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_simple_change_request_all,simple.change.request.all,model_simple_change_request,,1,1,1,1
+access_change_request_effort_line_all,change.request.effort.line.all,model_change_request_effort_line,,1,1,1,1
+access_change_request_export_wizard_all,change.request.export.wizard.all,model_change_request_export_wizard,,1,1,1,1

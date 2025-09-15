@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo Change Request -->
+        <record id="demo_change_request_1" model="simple.change.request">
+            <field name="name">Email System Upgrade</field>
+            <field name="priority">high</field>
+            <field name="state">submitted</field>
+            <field name="department">IT Department</field>
+            <field name="request_type">system</field>
+            <field name="justification">The current email system is outdated and poses security risks.</field>
+            <field name="expected_completion">2026-12-15</field>
+            <field name="project_name">IT Infrastructure Modernization</field>
+            <field name="change_request_date">2025-07-15</field>
+            <field name="change_number">CR-0001</field>
+            <field name="problem_statement">The current email system is outdated and poses significant security risks.</field>
+            <field name="change_description">Implement a new email system with enhanced security features and improved performance.</field>
+            <field name="acceptance_criteria">1. All users can access email without data loss
+2. Security vulnerabilities are eliminated
+3. System performance is improved by 40%</field>
+            <field name="reason_for_change">Compliance with new security regulations.</field>
+            <field name="benefits_of_change">Improved security posture and better user experience.</field>
+            <field name="delivery_timeline">Phase 1: Planning (2 weeks)
+Phase 2: Implementation (4 weeks)
+Phase 3: Testing (1 week)</field>
+            <field name="cost_estimation">Total: $110,000</field>
+            <field name="assumptions">All users have compatible devices and stable connectivity.</field>
+            <field name="payment_milestones">30% upon initiation, 40% upon completion, 30% upon go-live</field>
+        </record>
+    </data>
+</odoo> 

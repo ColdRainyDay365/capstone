@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Modern Form View -->
+    <record id="view_simple_change_request_form" model="ir.ui.view">
+        <field name="name">simple.change.request.form</field>
+        <field name="model">simple.change.request</field>
+        <field name="arch" type="xml">
+            <form string="Change Request">
+                <style>
+                    /* Modern Change Request Styling */
+                    .change-request-modern {
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        min-height: 100vh;
+                        padding: 20px;
+                    }
+                    
+                    .change-request-card {
+                        background: white;
+                        border-radius: 15px;
+                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                        margin-bottom: 20px;
+                        overflow: hidden;
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    
+                    .change-request-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+                    }
+                    
+                    .change-request-header {
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        padding: 25px;
+                        text-align: center;
+                    }
+                    
+                    .change-request-header h1 {
+                        margin: 0;
+                        font-size: 2.5em;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                    }
+                    
+                    .change-request-header .subtitle {
+                        font-size: 1.1em;
+                        opacity: 0.9;
+                        margin-top: 10px;
+                    }
+                    
+                    .change-request-content {
+                        padding: 30px;
+                    }
+                    
+                    .form-section {
+                        margin-bottom: 30px;
+                        padding: 25px;
+                        background: #f8f9fa;
+                        border-radius: 10px;
+                        border-left: 4px solid #667eea;
+                    }
+                    
+                    .form-section h3 {
+                        color: #333;
+                        margin-bottom: 20px;
+                        font-weight: 600;
+                        font-size: 1.3em;
+                    }
+                    
+                    .form-group {
+                        margin-bottom: 20px;
+                    }
+                    
+                    .form-group label {
+                        display: block;
+                        margin-bottom: 8px;
+                        font-weight: 500;
+                        color: #555;
+                    }
+                    
+                    .form-control {
+                        width: 100%;
+                        padding: 12px 15px;
+                        border: 2px solid #e1e5e9;
+                        border-radius: 8px;
+                        font-size: 14px;
+                        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                        background: white;
+                    }
+                    
+                    .form-control:focus {
+                        outline: none;
+                        border-color: #667eea;
+                        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+                    }
+                    
+                    .btn-modern {
+                        padding: 12px 25px;
+                        border: none;
+                        border-radius: 25px;
+                        font-weight: 600;
+                        font-size: 14px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                        margin: 5px;
+                    }
+                    
+                    .btn-primary-modern {
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                    }
+                    
+                    .btn-primary-modern:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+                    }
+                    
+                    .btn-success-modern {
+                        background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+                        color: white;
+                    }
+                    
+                    .btn-warning-modern {
+                        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                        color: white;
+                    }
+                    
+                    .btn-info-modern {
+                        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                        color: white;
+                    }
+                    
+                    .status-badge {
+                        display: inline-block;
+                        padding: 6px 15px;
+                        border-radius: 20px;
+                        font-size: 12px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+                    
+                    .status-draft {
+                        background: #e3f2fd;
+                        color: #1976d2;
+                    }
+                    
+                    .status-submitted {
+                        background: #fff3e0;
+                        color: #f57c00;
+                    }
+                    
+                    .status-approved {
+                        background: #e8f5e8;
+                        color: #388e3c;
+                    }
+                    
+                    .status-rejected {
+                        background: #ffebee;
+                        color: #d32f2f;
+                    }
+                    
+                    .status-completed {
+                        background: #f3e5f5;
+                        color: #7b1fa2;
+                    }
+                    
+                    .priority-badge {
+                        display: inline-block;
+                        padding: 4px 12px;
+                        border-radius: 15px;
+                        font-size: 11px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                    }
+                    
+                    .priority-low {
+                        background: #e8f5e8;
+                        color: #388e3c;
+                    }
+                    
+                    .priority-medium {
+                        background: #fff3e0;
+                        color: #f57c00;
+                    }
+                    
+                    .priority-high {
+                        background: #ffebee;
+                        color: #d32f2f;
+                    }
+                    
+                    .priority-urgent {
+                        background: #fce4ec;
+                        color: #c2185b;
+                    }
+                    
+                    .progress-bar {
+                        width: 100%;
+                        height: 8px;
+                        background: #e1e5e9;
+                        border-radius: 4px;
+                        overflow: hidden;
+                        margin: 10px 0;
+                    }
+                    
+                    .progress-fill {
+                        height: 100%;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        transition: width 0.3s ease;
+                    }
+                    
+                    .stats-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 20px;
+                        margin: 20px 0;
+                    }
+                    
+                    .stat-card {
+                        background: white;
+                        padding: 20px;
+                        border-radius: 10px;
+                        text-align: center;
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+                        transition: transform 0.3s ease;
+                    }
+                    
+                    .stat-card:hover {
+                        transform: translateY(-3px);
+                    }
+                    
+                    .stat-number {
+                        font-size: 2em;
+                        font-weight: 700;
+                        color: #667eea;
+                        margin-bottom: 5px;
+                    }
+                    
+                    .stat-label {
+                        color: #666;
+                        font-size: 0.9em;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+                    
+                    .form-row {
+                        display: flex;
+                        gap: 20px;
+                        margin-bottom: 20px;
+                    }
+                    
+                    .col-md-6 {
+                        flex: 1;
+                    }
+                    
+                    .button-group {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 10px;
+                    }
+                    
+                    .modern-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 20px;
+                        background: white;
+                        border-bottom: 1px solid #e1e5e9;
+                    }
+                    
+                    .header-actions {
+                        display: flex;
+                        gap: 10px;
+                    }
+                    
+                    .status-display {
+                        display: flex;
+                        gap: 10px;
+                        align-items: center;
+                    }
+                    
+                    /* Responsive Design */
+                    @media (max-width: 768px) {
+                        .change-request-content {
+                            padding: 20px;
+                        }
+                        
+                        .form-section {
+                            padding: 20px;
+                        }
+                        
+                        .stats-grid {
+                            grid-template-columns: 1fr;
+                        }
+                        
+                        .form-row {
+                            flex-direction: column;
+                        }
+                    }
+                </style>
+                <script type="text/javascript" src="/project_cr/static/src/js/modern_interface.js"></script>
+                <div class="change-request-modern">
+                    <header>
+                        <div class="modern-header">
+                            <div class="header-actions">
+                                <button name="action_submit" string="Submit" type="object" class="btn-modern btn-primary-modern" invisible="state != 'draft'" data-action="submit"/>
+                                <button name="action_approve" string="Approve" type="object" class="btn-modern btn-success-modern" invisible="state != 'submitted'" data-action="approve"/>
+                                <button name="action_reject" string="Reject" type="object" class="btn-modern btn-warning-modern" invisible="state != 'submitted'" data-action="reject"/>
+                                <button name="action_complete" string="Complete" type="object" class="btn-modern btn-info-modern" invisible="state != 'approved'" data-action="complete"/>
+                                <button name="action_reset_to_draft" string="Reset to Draft" type="object" class="btn-modern btn-secondary" invisible="state in ('draft', 'completed')"/>
+                                <button name="export_to_word" string="Export to Word" type="object" class="btn-modern btn-primary-modern" icon="fa-download" data-action="export"/>
+                            </div>
+                            <div class="status-display">
+                                <span class="status-badge" t-attf-class="status-#{state}">
+                                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,rejected,completed"/>
+                                </span>
+                            </div>
+                        </div>
+                    </header>
+                    <sheet>
+                        <div class="change-request-card">
+                            <div class="change-request-header">
+                                <h1>
+                                    <field name="name" placeholder="Change Request Number"/>
+                                </h1>
+                                <div class="subtitle">Streamlined workflow for managing change requests</div>
+                            </div>
+                            <div class="change-request-content">
+                                <!-- Progress Bar -->
+                                <div class="progress-section">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%"></div>
+                                    </div>
+                                    <div class="progress-text">0% Complete</div>
+                                </div>
+
+                                <!-- Basic Information -->
+                                <div class="form-section">
+                                    <h3>Basic Information</h3>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="project_name">Project Name</label>
+                                            <field name="project_name" placeholder="Enter project name" class="form-control"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="change_number">Change Number</label>
+                                            <field name="change_number" placeholder="e.g., CR-0001" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="department">Department</label>
+                                            <field name="department" placeholder="Enter department" class="form-control"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="request_type">Request Type</label>
+                                            <field name="request_type" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="priority">Priority</label>
+                                            <field name="priority" widget="priority" class="form-control"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="expected_completion">Expected Completion</label>
+                                            <field name="expected_completion" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="requester_id">Requester</label>
+                                        <field name="requester_id" options="{'no_create': True, 'no_open': True}" class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <!-- Problem Statement -->
+                                <div class="form-section">
+                                    <h3>Problem Statement</h3>
+                                    <div class="form-group">
+                                        <label for="problem_statement">Describe the Problem *</label>
+                                        <field name="problem_statement" placeholder="Describe the issue, gap, or opportunity that triggered this request" class="form-control" rows="4"/>
+                                    </div>
+                                </div>
+
+                                <!-- Change Description -->
+                                <div class="form-section">
+                                    <h3>Change Description</h3>
+                                    <div class="form-group">
+                                        <label for="change_description">Describe the Change</label>
+                                        <field name="change_description" placeholder="Describe the change being requested with detailed specifications" class="form-control" rows="6"/>
+                                    </div>
+                                </div>
+
+                                <!-- Acceptance Criteria -->
+                                <div class="form-section">
+                                    <h3>Acceptance Criteria</h3>
+                                    <div class="form-group">
+                                        <label for="acceptance_criteria">List Acceptance Criteria</label>
+                                        <field name="acceptance_criteria" placeholder="List the acceptance criteria for this change" class="form-control" rows="4"/>
+                                    </div>
+                                </div>
+
+                                <!-- Reason and Benefits -->
+                                <div class="form-section">
+                                    <h3>Reason and Benefits</h3>
+                                    <div class="form-group">
+                                        <label for="reason_for_change">Reason for Change</label>
+                                        <field name="reason_for_change" placeholder="Explain why the change is necessary" class="form-control" rows="3"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="benefits_of_change">Benefits of Change</label>
+                                        <field name="benefits_of_change" placeholder="Describe the benefits that will result from this change" class="form-control" rows="3"/>
+                                    </div>
+                                </div>
+
+                                <!-- Schedule and Cost -->
+                                <div class="form-section">
+                                    <h3>Schedule and Cost</h3>
+                                    <div class="form-group">
+                                        <label for="delivery_timeline">Delivery Timeline</label>
+                                        <field name="delivery_timeline" placeholder="Provide the delivery timeline" class="form-control" rows="3"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cost_estimation">Cost Estimation</label>
+                                        <field name="cost_estimation" placeholder="Provide cost estimation for this change" class="form-control" rows="3"/>
+                                    </div>
+                                </div>
+
+                                <!-- Assumptions and Payment -->
+                                <div class="form-section">
+                                    <h3>Assumptions and Payment</h3>
+                                    <div class="form-group">
+                                        <label for="assumptions">Key Assumptions</label>
+                                        <field name="assumptions" placeholder="List the key assumptions" class="form-control" rows="3"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="payment_milestones">Payment Milestones</label>
+                                        <field name="payment_milestones" placeholder="Define payment milestones" class="form-control" rows="3"/>
+                                    </div>
+                                </div>
+
+                                <!-- Additional Details -->
+                                <div class="form-section">
+                                    <h3>Additional Details</h3>
+                                    <div class="form-group">
+                                        <label for="justification">Business Justification</label>
+                                        <field name="justification" placeholder="Explain why this change is needed" class="form-control" rows="3"/>
+                                    </div>
+                                </div>
+
+                                <!-- Effort Breakdown -->
+                                <div class="form-section effort-breakdown">
+                                    <h3>Effort Breakdown</h3>
+                                    <div class="form-group">
+                                        <label for="total_effort_days">Total Effort (Days)</label>
+                                        <field name="total_effort_days" readonly="1" class="form-control"/>
+                                    </div>
+                                    <field name="effort_breakdown_ids" context="{'default_change_request_id': id}" class="effort-table"/>
+                                </div>
+                            </div>
+                        </div>
+                    </sheet>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_simple_change_request_list" model="ir.ui.view">
+        <field name="name">simple.change.request.list</field>
+        <field name="model">simple.change.request</field>
+        <field name="arch" type="xml">
+            <list string="Change Requests" decoration-info="state=='draft'" decoration-warning="state=='submitted'" decoration-success="state=='approved'" decoration-danger="state=='rejected'" decoration-muted="state=='completed'">
+                <field name="name"/>
+                <field name="project_name"/>
+                <field name="change_number"/>
+                <field name="requester_id"/>
+                <field name="department"/>
+                <field name="priority" widget="priority"/>
+                <field name="request_type"/>
+                <field name="total_effort_days"/>
+                <field name="expected_completion"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_simple_change_request_kanban" model="ir.ui.view">
+        <field name="name">simple.change.request.kanban</field>
+        <field name="model">simple.change.request</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" class="o_kanban_small_column">
+                <field name="name"/>
+                <field name="project_name"/>
+                <field name="change_number"/>
+                <field name="requester_id"/>
+                <field name="priority"/>
+                <field name="state"/>
+                <field name="department"/>
+                <field name="request_type"/>
+                <field name="total_effort_days"/>
+                <field name="expected_completion"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                            <field name="name"/>
+                                        </strong>
+                                        <div class="o_kanban_record_subtitle">
+                                            <field name="project_name"/>
+                                        </div>
+                                    </div>
+                                    <div class="o_kanban_record_priority">
+                                        <field name="priority" widget="priority"/>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="oe_kanban_bottom_left">
+                                            <field name="requester_id"/>
+                                        </div>
+                                        <div class="oe_kanban_bottom_right">
+                                            <field name="total_effort_days"/> days
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_simple_change_request_search" model="ir.ui.view">
+        <field name="name">simple.change.request.search</field>
+        <field name="model">simple.change.request</field>
+        <field name="arch" type="xml">
+            <search string="Change Requests">
+                <field name="name" string="Request Number"/>
+                <field name="project_name" string="Project Name"/>
+                <field name="change_number" string="Change Number"/>
+                <field name="requester_id" string="Requester"/>
+                <field name="department" string="Department"/>
+                <separator/>
+                <filter name="my_requests" string="My Requests" domain="[('requester_id', '=', uid)]"/>
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="submitted" string="Submitted" domain="[('state', '=', 'submitted')]"/>
+                <filter name="approved" string="Approved" domain="[('state', '=', 'approved')]"/>
+                <filter name="rejected" string="Rejected" domain="[('state', '=', 'rejected')]"/>
+                <filter name="completed" string="Completed" domain="[('state', '=', 'completed')]"/>
+                <separator/>
+                <filter name="high_priority" string="High Priority" domain="[('priority', 'in', ['high', 'urgent'])]"/>
+                <filter name="urgent" string="Urgent" domain="[('priority', '=', 'urgent')]"/>
+                <separator/>
+                <filter name="this_month" string="This Month" domain="[('create_date', '>=', (context_today() - relativedelta(months=1)).strftime('%Y-%m-01'))]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_state" string="State" context="{'group_by': 'state'}"/>
+                    <filter name="group_by_priority" string="Priority" context="{'group_by': 'priority'}"/>
+                    <filter name="group_by_requester" string="Requester" context="{'group_by': 'requester_id'}"/>
+                    <filter name="group_by_department" string="Department" context="{'group_by': 'department'}"/>
+                    <filter name="group_by_request_type" string="Request Type" context="{'group_by': 'request_type'}"/>
+                    <filter name="group_by_project" string="Project" context="{'group_by': 'project_name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_simple_change_request" model="ir.actions.act_window">
+        <field name="name">Change Requests</field>
+        <field name="res_model">simple.change.request</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first change request!
+            </p>
+            <p>
+                Use this form to submit and track change requests in your organization.
+                You can manage the complete lifecycle from draft to completion and export to Word documents.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_change_request_root" name="Change Requests" sequence="10"/>
+    <menuitem id="menu_change_request_main" name="Change Requests" parent="menu_change_request_root" action="action_simple_change_request" sequence="10"/>
+</odoo>
